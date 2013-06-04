@@ -17,7 +17,11 @@ class LogsController extends DatabaseLoggerAppController {
 		if(!empty($this->data)){
 			$filter = $this->data['Log']['filter'];
 		}
-		$conditions = $this->Log->textSearch($filter);
+		$this->dataToNamed();
+		$conditions = array_merge(
+			$this->Log->search($this->request->params['named']),
+			$this->Log->textSearch($filter)
+		);
 		$this->set('logs',$this->paginate($conditions));
 		$this->set('types', $this->Log->getTypes());
 		$this->set('filter', $filter);

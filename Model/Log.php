@@ -53,4 +53,18 @@ class Log extends DatabaseLoggerAppModel {
 		Cache::write($cache_key, $retval);
 		return $retval;
 	}
+	
+	function search($params){
+		$conditions = parent::search($params);
+		if(isset($params['start_date']) && !empty($params['start_date'])){
+			$params['start_date'] = str_replace('-','/',$params['start_date']);
+			$conditions['AND']["Log.created >="] = $this->str2datetime($params['start_date']);
+		}
+		if(isset($params['end_date']) && !empty($params['end_date'])){
+			$params['end_date'] = str_replace('-','/',$params['end_date']);
+			$conditions['AND']["Log.created <="] = $this->str2datetime($params['end_date'] . " 23:59:59");
+		}
+
+		return $conditions;
+	}
 }

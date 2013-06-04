@@ -19,7 +19,16 @@ class Log extends DatabaseLoggerAppModel {
 		if($query){
 			if(strpos($query, 'type@') === 0){
 				$query = str_replace('type@','', $query);
-				return array('Log.type' => $query);
+				if(strpos($query, '|')){
+					$types = explode('|', $query);
+					$retval = array();
+					foreach($types as $type){
+						$retval['OR'][] = array('Log.type' => $type);
+					}
+					return $retval;
+				} else {
+					return array('Log.type' => $query);
+				}
 			} else {
 				$escapedQuery = $this->getDataSource()->value($query);
 				return array("MATCH ({$this->alias}.message) AGAINST ($escapedQuery)");

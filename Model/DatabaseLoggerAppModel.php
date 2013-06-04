@@ -98,4 +98,25 @@ class DatabaseLoggerAppModel extends AppModel {
 			$this->setDataSource($this->configs['write']);
 		}
 	}
+	
+	/**
+	  * Export the current model table into a csv file.
+	  */
+	function export($options = array()){
+	  $default_options = array(
+	    'contain' => array()
+	  );
+	  
+	  $options = array_merge($default_options, $options);
+	  
+	  $columns = array_keys($this->schema());
+	  $headers = array();
+	  foreach($columns as $column){
+	    $headers[$this->alias][$column] = $column;
+	  }
+	  $data = $this->find('all', $options);
+	  
+	  array_unshift($data, $headers);
+	  return $data;
+	}
 }

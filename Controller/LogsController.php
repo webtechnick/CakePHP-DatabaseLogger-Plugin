@@ -2,7 +2,7 @@
 class LogsController extends DatabaseLoggerAppController {
 
 	var $name = 'Logs';
-	var $helpers = array('Time');
+	var $helpers = array('Time','Icing.Csv');
 	var $paginate = array(
 		'order' => 'Log.id DESC',
 		'fields' => array(
@@ -21,6 +21,19 @@ class LogsController extends DatabaseLoggerAppController {
 		$this->set('logs',$this->paginate($conditions));
 		$this->set('types', $this->Log->getTypes());
 		$this->set('filter', $filter);
+	}
+	
+	function admin_export($filter = null){
+		$this->layout = 'csv';
+		if(!empty($this->data)){
+			$filter = $this->data['Log']['filter'];
+		}
+		if($this->RequestHandler->ext != 'csv'){
+			$this->redirect(array('action' => 'export', 'ext' => 'csv', $filter));
+		}
+		$conditions = $this->Log->textSearch($filter);
+		$this->set('filename', 'export_logs.csv');
+		$this->set('data',$this->Log->export(array('conditions' => $conditions, 'recursive' => -1)));
 	}
 	
 	function admin_view($id = null) {

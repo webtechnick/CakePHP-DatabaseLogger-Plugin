@@ -25,6 +25,7 @@ class LogsController extends DatabaseLoggerAppController {
 		$this->set('logs',$this->paginate($conditions));
 		$this->set('types', $this->Log->getTypes());
 		$this->set('filter', $filter);
+		$this->set('search_params', $this->request->params['named']);
 	}
 	
 	function admin_export($filter = null){
@@ -35,7 +36,11 @@ class LogsController extends DatabaseLoggerAppController {
 		if($this->RequestHandler->ext != 'csv'){
 			$this->redirect(array('action' => 'export', 'ext' => 'csv', $filter));
 		}
-		$conditions = $this->Log->textSearch($filter);
+		$this->dataToNamed();
+		$conditions = array_merge(
+			$this->Log->search($this->request->params['named']),
+			$this->Log->textSearch($filter)
+		);
 		$this->set('filename', 'export_logs.csv');
 		$this->set('data',$this->Log->export(array('conditions' => $conditions, 'recursive' => -1)));
 	}

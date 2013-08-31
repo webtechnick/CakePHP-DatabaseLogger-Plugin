@@ -12,7 +12,7 @@ class TestLogsController extends LogsController {
 
 class LogsControllerTest extends CakeTestCase {
 	function startTest() {
-		$this->Logs =& new TestLogsController();
+		$this->Logs = new TestLogsController();
 		$this->Logs->constructClasses();
 	}
 

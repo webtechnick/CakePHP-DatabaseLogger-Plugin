@@ -17,7 +17,8 @@ CakeLog::config('database', array(
 */
 App::uses('ClassRegistry', 'Utility');
 App::uses('CakeLogInterface','Log');
-class DatabaseLogger implements CakeLogInterface{
+App::uses('Log', 'DatabaseLogger.Model');
+class DatabaseLog implements CakeLogInterface{
 	
 	/**
 	* Model name placeholder
@@ -48,4 +49,3 @@ class DatabaseLogger implements CakeLogInterface{
 		));
 	}
 }
-?>

@@ -10,6 +10,7 @@ Database CakeLogger for CakePHP 2.x applications.  Easy setup.  Ideal for multi 
 is just not convinient.  Simple admin interface to view/delete logs included.
 
 ## Changelog
+* 1.4.0 Compatible with CakePHP 2.4
 * 1.3.0 New configuration file to change default read, write datasources.
 * 1.2.0 Now using FULLTEXT search on messages, better indexes.  Update your schema.
 * 1.1.0 Adding new fields URI, hostname, referrer, and IP automatically logged on each log call. (only applys to default Log model)
@@ -23,7 +24,7 @@ Clone the repository into your `app/Plugin/DatabaseLogger` directory:
 
 Run the schema into your database:
 
-	$ cake schema create --plugin DatabaseLogger
+	$ cake schema create --plugin DatabaseLog
 	
 ## Setup
 

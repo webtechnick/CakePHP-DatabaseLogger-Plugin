@@ -4,7 +4,7 @@ class Log extends DatabaseLoggerAppModel {
 	var $displayField = 'type';
 	var $searchFields = array('Log.type');
 	
-	function beforeSave(){
+	function beforeSave($options = array()){
 		$this->data[$this->alias]['ip'] = env('REMOTE_ADDR');
 		$this->data[$this->alias]['hostname'] = env('HTTP_HOST');
 		$this->data[$this->alias]['uri'] = env('REQUEST_URI');
@@ -54,7 +54,7 @@ class Log extends DatabaseLoggerAppModel {
 		return $retval;
 	}
 	
-	function search($params){
+	function search($params = array(), $options = array()){
 		$conditions = parent::search($params);
 		if(isset($params['start_date']) && !empty($params['start_date'])){
 			$params['start_date'] = str_replace('-','/',$params['start_date']);

@@ -51,7 +51,7 @@ class DatabaseLoggerAppModel extends AppModel {
 	* - last : find last record by created date
 	* @param array of options
 	*/
-	function find($type, $options = array()){
+	function find($type = 'first', $options = array()){
 		switch($type){
 		case 'last':
 			$options = array_merge(
@@ -69,7 +69,7 @@ class DatabaseLoggerAppModel extends AppModel {
 	* @param string filter
 	* @return conditions array
 	*/
-	function generateFilterConditions($filter = null){
+	function generateFilterConditions($filter = NULL, $pre = ''){
 		$retval = array();
 		if($filter){
 			foreach($this->searchFields as $field){

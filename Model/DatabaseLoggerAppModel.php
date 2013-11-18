@@ -102,7 +102,7 @@ class DatabaseLoggerAppModel extends AppModel {
 	/**
 	  * Export the current model table into a csv file.
 	  */
-	function export($options = array()){
+	function export($options = array(), $showHeaders = true){
 	  $default_options = array(
 	    'contain' => array()
 	  );

@@ -1,5 +1,5 @@
 <?php
-class LogsController extends DatabaseLoggerAppController {
+class LogsController extends DatabaseLogAppController {
 
 	var $name = 'Logs';
 	var $helpers = array('Time','Icing.Csv');

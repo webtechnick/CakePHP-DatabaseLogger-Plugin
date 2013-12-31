@@ -1,5 +1,5 @@
-<?php echo $this->Html->css('/database_logger/css/style'); ?>
-<div class="database_logger_plugin">
+<?php echo $this->Html->css('/database_log/css/style'); ?>
+<div class="database_log_plugin">
 	<div class="logs view">
 	<h2><?php echo __('Log');?></h2>
 		<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -26,6 +26,11 @@
 			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Referrer'); ?></dt>
 			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 				<?php echo $log['Log']['refer']; ?>
+				&nbsp;
+			</dd>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('User Agent'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $log['Log']['user_agent']; ?>
 				&nbsp;
 			</dd>
 			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Hostname'); ?></dt>

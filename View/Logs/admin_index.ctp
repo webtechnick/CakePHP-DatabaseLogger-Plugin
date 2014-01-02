@@ -1,8 +1,8 @@
 <?php echo $this->Html->css('/database_log/css/style'); ?>
 <div class="database_log_plugin">
-	<?php echo $this->element('admin_filter', array('plugin' => 'database_log', 'model' => 'Log')); ?>
 	<div class="logs index">
 		<h2><?php echo __('Logs');?></h2>
+		<?php echo $this->element('admin_filter', array('plugin' => 'database_log', 'model' => 'Log')); ?>
 		<table cellpadding="0" cellspacing="0">
 		<tr>
 				<th><?php echo $this->Paginator->sort('created');?></th>

@@ -10,7 +10,7 @@ Database CakeLogger for CakePHP 2.x applications.  Easy setup.  Ideal for multi 
 is just not convinient.  Simple admin interface to view/delete logs included.
 
 ## Changelog
-* 1.4.1 Compatible with CakePHP 2.4. Field user_agent added.
+* 1.4.1 Compatible with CakePHP 2.4. Field user_agent added. Fix CSV export.
 * 1.4.0 Compatible with CakePHP 2.4
 * 1.3.0 New configuration file to change default read, write datasources.
 * 1.2.0 Now using FULLTEXT search on messages, better indexes.  Update your schema.
@@ -53,3 +53,6 @@ Anywhere in your app where you call log() or CakeLog::write the database logger 
 		CakeLog::write('error', 'This is a detailed message logged to the database');
 		
 Navigate to `http://www.example.com/admin/database_log/logs` to view/search/delete your logs.
+
+Warning: you should have added admin prefix for routes.
+Configure::write('Routing.prefixes', array('admin'));

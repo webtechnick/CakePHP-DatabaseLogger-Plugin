@@ -27,6 +27,10 @@ Run the schema into your database:
 
 	$ cake schema create --plugin DatabaseLog
 	
+Load plugin in bootstrap.php
+
+	CakePlugin::load('DatabaseLog');
+	
 ## Setup
 
 Create a config file in `app/Config/database_log` with the following (example file in plugin.)
@@ -55,4 +59,5 @@ Anywhere in your app where you call log() or CakeLog::write the database logger 
 Navigate to `http://www.example.com/admin/database_log/logs` to view/search/delete your logs.
 
 Warning: you should have added admin prefix for routes.
-Configure::write('Routing.prefixes', array('admin'));
+
+	Configure::write('Routing.prefixes', array('admin'));

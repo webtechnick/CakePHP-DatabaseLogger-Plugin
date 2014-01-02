@@ -3,7 +3,7 @@
 	"description": "CakePHP Database Logger Plugin",
 	"type": "cakephp-plugin",
 	"keywords": ["cakephp", "database", "logging", "logs", "plugin"],
-	"homepage": "https://github.com/webtechnick/CakePHP-DatabaseLogger-Plugin",
+	"homepage": "https://github.com/webtechnick/CakePHP-DatabaseLog-Plugin",
 	"license": "MIT",
 	"authors": [
 		{
@@ -13,8 +13,8 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/webtechnick/CakePHP-DatabaseLogger-Plugin/issues",
-		"source": "https://github.com/webtechnick/CakePHP-DatabaseLogger-Plugin"
+		"issues": "https://github.com/webtechnick/CakePHP-DatabaseLog-Plugin/issues",
+		"source": "https://github.com/webtechnick/CakePHP-DatabaseLog-Plugin"
 	},
 	"require": {
 		"php": ">=5.2.0",
@@ -24,6 +24,6 @@
 		"branch-alias": {
 			"dev-master": "2.x-dev"
 		},
-		"installer-name": "DatabaseLogger"
+		"installer-name": "DatabaseLog"
 	}
 }

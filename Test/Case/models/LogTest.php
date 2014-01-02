@@ -1,9 +1,9 @@
 <?php
 /* Log Test cases generated on: 2011-08-08 13:46:32 : 1312832792*/
-App::uses('Log', 'DatabaseLogger.Model');
+App::uses('Log', 'DatabaseLog.Model');
 
 class LogTest extends CakeTestCase {
-	var $fixtures = array('app.database_logger.log');
+	var $fixtures = array('app.database_log.log');
 	
 	function startTest() {
 		$this->Log = ClassRegistry::init('Log');

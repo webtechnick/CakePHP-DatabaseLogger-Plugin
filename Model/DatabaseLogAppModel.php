@@ -1,5 +1,5 @@
 <?php
-class DatabaseLoggerAppModel extends AppModel {
+class DatabaseLogAppModel extends AppModel {
 	var $recursive = -1;
 	/**
 	* Filter fields
@@ -18,8 +18,8 @@ class DatabaseLoggerAppModel extends AppModel {
 	* Set the default datasource to the read setup in config
 	*/
 	public function __construct($id = false, $table = null, $ds = null) {
-		if(Configure::load('database_logger')){
-			$this->configs = Configure::read('DatabaseLogger');
+		if(Configure::load('database_log')){
+			$this->configs = Configure::read('DatabaseLog');
 		}
 		parent::__construct($id, $table, $ds);
 		$this->setDataSourceRead();

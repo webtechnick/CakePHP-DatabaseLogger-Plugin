@@ -1,6 +1,6 @@
 <?php
 /* Logs Test cases generated on: 2011-08-08 13:47:23 : 1312832843*/
-App::import('Controller', 'database_logger.Logs');
+App::import('Controller', 'database_log.Logs');
 
 class TestLogsController extends LogsController {
 	var $autoRender = false;

@@ -1,8 +1,8 @@
 <?php
-class LogsController extends DatabaseLoggerAppController {
+class LogsController extends DatabaseLogAppController {
 
 	var $name = 'Logs';
-	var $helpers = array('Time','Icing.Csv');
+	//var $helpers = array('Time','Icing.Csv');
 	var $paginate = array(
 		'order' => 'Log.id DESC',
 		'fields' => array(
@@ -29,13 +29,14 @@ class LogsController extends DatabaseLoggerAppController {
 	}
 	
 	function admin_export($filter = null){
-		$this->layout = 'csv';
+		//$this->layout = 'csv';
+		$this->layout = false;
 		if(!empty($this->data)){
 			$filter = $this->data['Log']['filter'];
 		}
-		if($this->RequestHandler->ext != 'csv'){
-			$this->redirect(array('action' => 'export', 'ext' => 'csv', $filter));
-		}
+		//if($this->RequestHandler->ext != 'csv'){
+		//	$this->redirect(array('action' => 'export', 'ext' => 'csv', $filter));
+		//}
 		$this->dataToNamed();
 		$conditions = array_merge(
 			$this->Log->search($this->request->params['named']),

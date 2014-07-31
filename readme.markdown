@@ -24,7 +24,7 @@ Clone the repository into your `app/Plugin/DatabaseLogger` directory:
 
 Run the schema into your database:
 
-	$ cake schema create --plugin DatabaseLog
+	$ cake schema create --plugin DatabaseLogger
 	
 ## Setup
 

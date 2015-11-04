@@ -15,10 +15,12 @@ CakeLog::config('database', array(
 ));
 
 */
+App::uses('BaseLog', 'Log/Engine');
 App::uses('ClassRegistry', 'Utility');
 App::uses('CakeLogInterface','Log');
 App::uses('Log', 'DatabaseLogger.Model');
-class DatabaseLog implements CakeLogInterface{
+
+class DatabaseLog extends BaseLog {
 	
 	/**
 	* Model name placeholder
@@ -34,6 +36,7 @@ class DatabaseLog implements CakeLogInterface{
 	* Contruct the model class
 	*/
 	function __construct($options = array()){
+		parent::__construct($options);
 		$this->model = isset($options['model']) ? $options['model'] : 'DatabaseLogger.Log';
 		$this->Log = ClassRegistry::init($this->model);
 	}
@@ -48,4 +51,7 @@ class DatabaseLog implements CakeLogInterface{
 			'message' => $message
 		));
 	}
+	
+	
+	
 }

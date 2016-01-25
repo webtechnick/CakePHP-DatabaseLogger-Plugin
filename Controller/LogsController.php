@@ -9,7 +9,9 @@ class LogsController extends DatabaseLoggerAppController {
 			'Log.created',
 			'Log.type',
 			'Log.message',
-			'Log.id'
+			'Log.id',
+			'Log.user_id'
+
 		)
 	);
 
@@ -67,5 +69,22 @@ class LogsController extends DatabaseLoggerAppController {
 		}
 		$this->Session->setFlash(__('Log was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	public function admin_delete_similar($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for log'));
+			$this->redirect(array('action'=>'index'));
+		}
+		$log = $this->Log->findById($id);
+		if ($this->Log->deleteAll(['Log.message LIKE'=>'%'.$log['Log']['message'].'%'])) {
+			$this->Session->setFlash(__('Log deleted'));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->Session->setFlash(__('Log was not deleted'));
+		$this->redirect(array('action' => 'index'));
+	}
+	public function teste(){
+
 	}
 }

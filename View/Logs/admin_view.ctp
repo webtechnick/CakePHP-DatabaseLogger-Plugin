@@ -43,6 +43,16 @@
 				<?php echo $log['Log']['created']; ?>
 				&nbsp;
 			</dd>
+            <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('UserID'); ?></dt>
+            <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+                <?php echo $log['Log']['user_id']; ?>
+                &nbsp;
+            </dd>
+            <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Session Data'); ?></dt>
+            <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+                <?php echo print_r(json_decode($log['Log']['session_data'])); ?>
+                &nbsp;
+            </dd>
 		</dl>
 	</div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+	App::uses('AppController','Controller');
 class DatabaseLoggerAppController extends AppController {
 	protected function dataToNamed($key = 'Search'){
   	$params = is_array($this->request->params['named']) ? $this->request->params['named'] : array();

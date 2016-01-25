@@ -9,6 +9,8 @@ class Log extends DatabaseLoggerAppModel {
 		$this->data[$this->alias]['hostname'] = env('HTTP_HOST');
 		$this->data[$this->alias]['uri'] = env('REQUEST_URI');
 		$this->data[$this->alias]['refer'] = env('HTTP_REFERER');
+		$this->data[$this->alias]['user_id'] = CakeSession::read('Auth.User.id');
+		$this->data[$this->alias]['session_data'] = json_encode(CakeSession::read());
 		return true;
 	}
 	

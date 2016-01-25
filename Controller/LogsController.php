@@ -3,8 +3,8 @@ class LogsController extends DatabaseLoggerAppController {
 
 	var $name = 'Logs';
 	var $helpers = array('Time','Icing.Csv');
-	var $paginate = array(
-		'order' => 'Log.id DESC',
+	public $paginate = array(
+		'order' => 'Log.created DESC',
 		'fields' => array(
 			'Log.created',
 			'Log.type',
@@ -14,6 +14,7 @@ class LogsController extends DatabaseLoggerAppController {
 	);
 
 	function admin_index($filter = null) {
+		$this->Paginator->settings = $this->paginate;
 		if(!empty($this->data)){
 			$filter = $this->data['Log']['filter'];
 		}
@@ -22,6 +23,8 @@ class LogsController extends DatabaseLoggerAppController {
 			$this->Log->search($this->request->params['named']),
 			$this->Log->textSearch($filter)
 		);
+
+
 		$this->set('logs',$this->paginate($conditions));
 		$this->set('types', $this->Log->getTypes());
 		$this->set('filter', $filter);
